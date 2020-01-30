@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+
+{%block main%}
+<section>
+    <h2>login</h2>
+    <form action="">
+        {{form.hidden_tag()}}
+        {{form.username.label}}
+        {{form.username()}}
+        {{form.password.label}}
+        {{form.password()}}
+        {{form.login()}}
+    </form>
+</section>
+{%endblock%}
