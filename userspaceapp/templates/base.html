@@ -4,28 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Quicksand|Sigmar+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/app.css')}}">
     <title>User Space</title>
 </head>
 <body>
-    <header>
+    <header class="header">
         <h1>user space</h1>
     </header>
-    <nav>
+    <nav class="navigation">
         <ul>
-            <li><a href="{{url_for('index')}}">home</a></li>
             {% if current_user.is_authenticated%}
+                <li><a href="{{url_for('home')}}">home</a></li>
                 <li><a href="{{url_for('logout')}}">logout</a></li>
             {%else%}
+                <li><a href="{{url_for('index')}}">home</a></li>
                 <li><a href="{{url_for('register')}}">register</a></li>
                 <li><a href="{{url_for('login')}}">login</a></li>
             {%endif%}
         </ul>
     </nav>
-    <main>
+    <main class="main">
         {%block main%}
         {%endblock%}
     </main>
-    <footer>
+    <footer class="footer">
         <section>
             <h3>copyright &copy; 2020</h3>
             <h4>all right are reserved by zuber shekh</h4>

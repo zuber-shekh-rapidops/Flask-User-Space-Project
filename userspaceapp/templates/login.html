@@ -2,27 +2,37 @@
 
 {%block main%}
 <section>
-    <h2>login</h2>
     {%for message in get_flashed_messages()%}
         <p>{{message}}</p>
     {%endfor%}
-    <form action="" method="POST">
+    <form class="forms" action="" method="POST">
+        <h2>login</h2>
         {{form.hidden_tag()}}
-        {{form.username.label}}
-        {{form.username()}}
-        {% if form.username.errors%}
-            {% for error in form.username.errors()%}
-                <p style="color: red;">{{error}}</p>
-            {%endfor%}
-        {%endif%}
-        {{form.password.label}}
-        {{form.password()}}
-        {% if form.password.errors%}
-            {% for error in form.password.errors()%}
-                <p style="color: red;">{{error}}</p>
-            {%endfor%}
-        {%endif%}
-        {{form.login()}}
+        <div class=form-group>
+            {{form.username.label(class='form-label')}}
+            {{form.username(class='form-control',placeholder="username")}}
+            {% if form.username.errors%}
+                {% for error in form.username.errors%}
+                    <p style="color: red;">{{error}}</p>
+                {%endfor%}
+            {%endif%}
+        </div>
+        <div class="form-group">
+            {{form.password.label(class='form-label')}}
+            {{form.password(class='form-control',placeholder="password")}}
+            {% if form.password.errors%}
+                {% for error in form.password.errors%}
+                    <p style="color: red;">{{error}}</p>
+                {%endfor%}
+            {%endif%}
+        </div>
+        <div class="form-group">
+            {{form.login()}}
+        </div>
+        <div>
+            <p>don't have account then <a href="{{url_for('register')}}">click</a> here to register</p>
+        </div>
     </form>
+    
 </section>
 {%endblock%}

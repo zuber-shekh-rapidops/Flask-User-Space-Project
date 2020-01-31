@@ -2,13 +2,141 @@
 /* ******************************** LINKS ******************************** */
 /* 
     
+    color palette   :   https://colorhunt.co/palette/162836
+    fonts           :   https://fonts.google.com/?selection.family=Bebas+Neue|Sigmar+One
 
 
 */
 /* ******************************** RESETTING ******************************** */
+*{
+    padding: 0;
+    margin: 0;
+}
 /* ******************************** VARIABLES ******************************** */
+:root{
+    --header-bg:#9be3de;
+    --header-fonts:'Sigmar One', cursive;
+    --nav-bg:#beebe9;
+    --nav-fonts:'Bebas Neue', cursive;
+    --main-bg:#fffdf9;
+    --main-fonts:'Quicksand', sans-serif;
+    --footer-bg:#ffe3ed;
+}
 /* ******************************** DEFAULT STYLE ******************************** */
+body{
+    color: #ffffff;
+    font-size: 16px;
+}
 /* ******************************** HEADER ******************************** */
+.header{
+    background-color: var(--header-bg);
+    font-family: var(--header-fonts);
+}
+.header h1{
+    text-align: center;
+    padding: 1rem;
+    text-shadow: 0 5px grey;
+}
 /* ******************************** NAVIGATION ******************************** */
+.navigation{
+    background-color: var(--nav-bg);
+    font-family: var(--nav-fonts);
+}
+.navigation ul{
+    list-style-type: none;
+    text-align: center;
+}
+.navigation ul li{
+    display: inline-flex;
+}
+.navigation ul li a{
+    text-decoration: none;
+    padding: 1rem;
+}
+.navigation ul li a:hover{
+    background-color: var(--header-bg);
+}
 /* ******************************** MAIN ******************************** */
+.main{
+    color: #000000;
+    font-family: var(--main-fonts);
+}
+.main h2{
+    text-align: center;
+    padding: 1rem;
+}
+.welcome-message{
+    text-align: center;
+    padding: 1rem;
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem auto;
+    padding: 3rem;
+    background-color: #eaeaea;
+    max-width: 550px;   
+    border-radius: 20px;
+
+}
+.forms > h2{
+    text-align: center;
+}
+.form-group{
+    /* margin: 0 auto; */
+    display: flex;
+    justify-content: center;
+}
+.form-control{
+    margin: 1rem;
+    width: auto;
+}
+.form-label{
+    width: 30%;
+}
+.forms p{
+    padding: 1rem;
+    text-align: center;
+}
+input{
+    background-color: transparent;
+    border:none;
+    border-bottom: 2px solid white;
+    font-size: 1rem;
+}
+input[type=submit]{
+    border: 2px solid white;
+    padding: 0.2rem 1rem;
+    border-radius: 10px;    
+}
+input[type=submit]:hover{
+    background-color:#000000;
+    color: #ffffff;
+}
+label{
+    margin: 1rem;
+    font-size: 1rem;
+}
+/* ******************************** USERS INFO ******************************** */
+.users-info{
+    text-align: center;
+    padding: 1rem;
+}
+.users-info  h3{
+}
+.users-info {
+
+}
 /* ******************************** FOOTER ******************************** */
+.footer{
+    background-color: var(--footer-bg);
+    text-align: center;
+    font-family: var(--main-fonts);
+}
+.footer section{
+    color: #000000;
+    text-transform: uppercase;
+    padding: 1rem;
+    font-size: 1rem;
+}

@@ -2,16 +2,20 @@ from userspaceapp import app,login_manager,db
 from userspaceapp.forms import LoginForm,RegisterForm
 from userspaceapp.models import User
 from flask import render_template,redirect,url_for,flash
-from flask_login import login_user,logout_user,login_required
+from flask_login import login_user,logout_user,login_required,current_user
 
 #  ******************************** ROUTES ******************************** 
 #  ******************************** / ******************************** 
 @app.route('/')
 def index():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     return render_template('index.html')
 #  ******************************** /LOGIN ******************************** 
 @app.route('/login',methods=['GET','POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form=LoginForm()
 
     if form.validate_on_submit():
@@ -40,7 +44,8 @@ def register():
 @app.route('/home')
 @login_required
 def home():
-    return render_template('home.html')
+    users=User.query.all()
+    return render_template('home.html',users=users)
 #  ******************************** /LOGOUT ******************************** 
 @app.route('/logout')
 @login_required
