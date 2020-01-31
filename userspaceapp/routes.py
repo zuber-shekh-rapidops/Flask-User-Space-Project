@@ -1,21 +1,50 @@
-from userspaceapp import app
+from userspaceapp import app,login_manager,db
 from userspaceapp.forms import LoginForm,RegisterForm
-from flask import render_template,redirect,url_for
+from userspaceapp.models import User
+from flask import render_template,redirect,url_for,flash
+from flask_login import login_user,logout_user,login_required
 
 #  ******************************** ROUTES ******************************** 
 #  ******************************** / ******************************** 
-
 @app.route('/')
 def index():
     return render_template('index.html')
 #  ******************************** /LOGIN ******************************** 
-@app.route('/login')
+@app.route('/login',methods=['GET','POST'])
 def login():
     form=LoginForm()
+
+    if form.validate_on_submit():
+        user=User.query.filter_by(email=form.username.data).first()
+        if user and user.password==form.password.data:
+            flash('login successfull')
+            login_user(user)
+            return redirect(url_for('home'))
+        else:
+            flash('incorrect username or password')
+            return redirect(url_for('login'))
+
     return render_template('login.html',form=form)
 #  ******************************** /REGISTER ******************************** 
-@app.route('/register')
+@app.route('/register',methods=['GET','POST'])
 def register():
     form=RegisterForm()
+    if form.validate_on_submit():
+        user=User(username=form.username.data,email=form.email.data,password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account created successfully')
+        return redirect(url_for('login'))
     return render_template('register.html',form=form)
-#  ******************************** /USER/HOME ******************************** 
+#  ******************************** /HOME ******************************** 
+@app.route('/home')
+@login_required
+def home():
+    return render_template('home.html')
+#  ******************************** /LOGOUT ******************************** 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash(f"you're logged out successfully")
+    return redirect(url_for('login'))

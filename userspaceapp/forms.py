@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,SubmitField
-from wtforms.validators import DataRequired,Email,EqualTo
-
+from wtforms.validators import DataRequired,Email,EqualTo,ValidationError
+from userspaceapp.models import User
 
 class LoginForm(FlaskForm):
 
@@ -17,3 +17,12 @@ class RegisterForm(FlaskForm):
     confirm_password=PasswordField('enter confirm password',validators=[DataRequired(),EqualTo('password')])
     register=SubmitField('register')
 
+    def validate_username(self,username):
+        user=User.query.filter_by(username=username.data).first()
+        if user:
+            raise ValidationError('username is already taken')
+    
+    def validate_email(self,email):
+        user=User.query.filter_by(email=email.data).first()
+        if user:
+            raise ValidationError('email is already taken')

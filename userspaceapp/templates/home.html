@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+
+{%block main%}
+    {%for message in get_flashed_messages()%}
+        <p>{{message}}</p>
+    {%endfor%}
+<section>
+    <h2>welcome {{current_user.username}}</h2>
+</section>
+{%endblock%}

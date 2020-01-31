@@ -3,16 +3,36 @@
 {%block main%}
 <section>
     <h2>login</h2>
-    <form action="">
+    <form action="" method="POST">
         {{form.hidden_tag()}}
         {{form.username.label}}
         {{form.username()}}
+        {% if form.username.errors%}
+            {% for error in form.username.errors%}
+                <p style="color: red;">{{error}}</p>
+            {%endfor%}
+        {%endif%}
         {{form.email.label}}
         {{form.email()}}
+        {% if form.email.errors%}
+            {% for error in form.email.errors%}
+                <p style="color: red;">{{error}}</p>
+            {%endfor%}
+        {%endif%}
         {{form.password.label}}
         {{form.password()}}
+        {% if form.password.errors%}
+            {% for error in form.password.errors%}
+                <p style="color: red;">{{error}}</p>
+            {%endfor%}
+        {%endif%}
         {{form.confirm_password.label}}
         {{form.confirm_password()}}
+        {% if form.confirm_password.errors%}
+            {% for error in form.confirm_password.errors%}
+                <p style="color: red;">{{error}}</p>
+            {%endfor%}
+        {%endif%}
         {{form.register()}}
     </form>
 </section>
