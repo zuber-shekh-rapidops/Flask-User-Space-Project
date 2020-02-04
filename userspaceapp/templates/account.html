@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+
+{%block main%}
+<section>
+    <h2>{{current_user.username}}</h2>
+</section>
+{%for message in get_flashed_messages()%}
+    <p>{{message}}</p>
+{%endfor%}
+<section class='users-info'>
+    <h3>Account Information</h3>
+    <h2><a href="{{url_for('update_info',userid=current_user.id)}}">Edit</a></h2>
+    <ul>
+        <li>username : {{current_user.username}}</li>
+        <li>email : {{current_user.email}}</li>
+    </ul>
+</section>
+{%endblock%}
