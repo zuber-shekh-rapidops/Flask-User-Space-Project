@@ -1,13 +1,18 @@
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_migrate import Migrate
 #  ******************************** CONFIGURATIONS ******************************** 
+BASEDIR=os.path.abspath(os.path.dirname(__name__))
 app=Flask(__name__)
 app.config['SECRET_KEY']='secretkey'
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///userspace.db'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///'+os.path.join(BASEDIR,'userspaceapp.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db=SQLAlchemy(app)
+
 login_manager=LoginManager(app)
+Migrate(app,db)
 #  ********************************  ******************************** 
 
 from userspaceapp.main.routes import main
