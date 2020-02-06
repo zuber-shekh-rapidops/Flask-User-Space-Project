@@ -9,4 +9,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db=SQLAlchemy(app)
 login_manager=LoginManager(app)
 #  ********************************  ******************************** 
-from userspaceapp import routes
+
+from userspaceapp.main.routes import main
+from userspaceapp.users.routes import users
+
+
+app.register_blueprint(main)
+app.register_blueprint(users)
+
+from userspaceapp.main import routes
+from userspaceapp.users import routes

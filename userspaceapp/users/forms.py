@@ -1,8 +1,10 @@
+# **************************************** /users/forms.py ****************************************
+
 from flask import flash
 from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,SubmitField
 from wtforms.validators import DataRequired,Email,EqualTo,ValidationError
-from userspaceapp.models import User
+from userspaceapp.users.models import User
 
 class LoginForm(FlaskForm):
 

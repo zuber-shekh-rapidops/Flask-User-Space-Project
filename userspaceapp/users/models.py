@@ -1,3 +1,5 @@
+# **************************************** /users/models.py ****************************************
+
 from userspaceapp import db,login_manager
 from flask_login import UserMixin
 
