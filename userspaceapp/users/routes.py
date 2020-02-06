@@ -16,7 +16,7 @@ def login():
 
     if form.validate_on_submit():
         user=User.query.filter_by(email=form.username.data).first()
-        if user and user.password==form.password.data:
+        if user and user.check_password(form.password.data):
             flash('login successfull')
             login_user(user)
             return redirect(url_for('users.home'))

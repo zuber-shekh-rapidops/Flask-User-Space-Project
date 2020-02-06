@@ -1,6 +1,6 @@
 # **************************************** /users/models.py ****************************************
 
-from userspaceapp import db,login_manager
+from userspaceapp import db,login_manager,bcrypt
 from flask_login import UserMixin
 
 @login_manager.user_loader
@@ -14,6 +14,13 @@ class User(db.Model,UserMixin):
     email=db.Column(db.String(30),unique=True,nullable=False)
     password=db.Column(db.String(30),nullable=False)
 
-
+    def __init__(self,username,email,password):
+        self.username=username
+        self.email=email
+        self.password=bcrypt.generate_password_hash(password)
+    
+    def check_password(self,password):
+        return bcrypt.check_password_hash(self.password,password)
+            
     def __repr__(self):
         return f"Hello I am {self.username}"
