@@ -1,0 +1,13 @@
+{%extends 'base.html'%}
+
+{%block main%}
+<section style="text-align: center;">
+    <h2>{{post.title}}</h2>
+    <h2>{{post.content}}</h2>
+    <p><a href="{{url_for('post.update_post',post_id=post.id)}}">Edit</a></p>
+    <p><a href="{{url_for('post.delete_post',post_id=post.id)}}">Delete</a></p>
+    <br><br><br>
+    <h1><a href="{{url_for('post.add_post')}}">Add New Post &raquo;</a></h1>
+    <br>
+</section>
+{%endblock%}

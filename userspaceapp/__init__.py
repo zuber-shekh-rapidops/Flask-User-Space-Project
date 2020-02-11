@@ -19,10 +19,13 @@ bcrypt=Bcrypt(app)
 
 from userspaceapp.main.routes import main
 from userspaceapp.users.routes import users
+from userspaceapp.post.routes import post
 
 
 app.register_blueprint(main)
 app.register_blueprint(users)
+app.register_blueprint(post)
 
 from userspaceapp.main import routes
 from userspaceapp.users import routes
+from userspaceapp.post import routes

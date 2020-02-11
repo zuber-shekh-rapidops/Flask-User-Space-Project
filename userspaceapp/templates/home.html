@@ -8,13 +8,5 @@
     <h2>welcome {{current_user.username}}</h2>
 </section>
 <section class='users-info'>
-    <h3>List of Users</h3>
-    <ol>
-        {%for user in users%}
-            {%if current_user.username!=user.username%}
-                <li><a href="#">{{user.username}}</a></li>
-            {%endif%}
-        {%endfor%}
-    </ol>
 </section>
 {%endblock%}

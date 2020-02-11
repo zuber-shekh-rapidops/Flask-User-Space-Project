@@ -13,6 +13,7 @@ class User(db.Model,UserMixin):
     username=db.Column(db.String(30),unique=True,nullable=False)
     email=db.Column(db.String(30),unique=True,nullable=False)
     password=db.Column(db.String(30),nullable=False)
+    posts=db.relationship('Post',backref='user')
 
     def __init__(self,username,email,password):
         self.username=username
@@ -24,3 +25,9 @@ class User(db.Model,UserMixin):
 
     def __repr__(self):
         return f"Hello I am {self.username}"
+
+
+
+    
+
+

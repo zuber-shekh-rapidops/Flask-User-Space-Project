@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+
+{%block main%}
+<section style="text-align: center;">
+    <h2>Posts</h2>
+    <hr>
+    {%if current_user.posts%}
+        {%for post in current_user.posts%}
+            <ul>
+                <li><a href="{{url_for('post.view_post',post_id=post.id)}}">{{post.title}}</a></li>
+            </ul>
+        {%endfor%}
+    {%else%}
+            <h3>No post available</h3>
+    {%endif%}
+    <br><br><br>
+    <h1><a href="{{url_for('post.add_post')}}">Add New Post &raquo;</a></h1>
+    <br>
+</section>
+{%endblock%}

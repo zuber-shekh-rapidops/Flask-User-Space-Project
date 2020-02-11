@@ -48,6 +48,11 @@ def home():
 def account():
     user=User.query.get(current_user.id)
     return render_template('account.html',user=user)
+#  ******************************** /POSTS ******************************** 
+@users.route('/Posts')
+@login_required
+def posts():
+    return render_template('posts.html')
 #  ******************************** /UPDATE/{USERID} ******************************** 
 @users.route('/update/<int:userid>',methods=['GET','POST'])
 @login_required
