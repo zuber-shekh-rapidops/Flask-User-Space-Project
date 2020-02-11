@@ -8,5 +8,19 @@
     <h2>welcome {{current_user.username}}</h2>
 </section>
 <section class='users-info'>
+    <h3>posts</h3><br>
+    <hr><br>
+    {%if posts%}
+        {%for post in posts%}
+            <div class="container post-container" style="border: 2px solid grey; max-width: 500px;margin: 0 auto;">
+                <h4>title : {{post.title}}</>
+                <p>content : {{post.content}}</p>
+                <p>user : {%if current_user.username==post.user.username%}me{%else%}{{post.user.username}}{%endif%}</p>
+                <a href="{{url_for('post.view_post',post_id=post.id)}}">view</a>
+                <br>
+                <p>-----------</p>
+            </div>
+        {%endfor%}
+    {%endif%}
 </section>
 {%endblock%}

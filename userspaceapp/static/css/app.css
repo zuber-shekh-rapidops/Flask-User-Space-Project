@@ -118,16 +118,16 @@ label{
     margin: 1rem;
     font-size: 1rem;
 }
+.post-container:hover{
+    opacity: 0.5;
+}
 /* ******************************** USERS INFO ******************************** */
 .users-info{
     text-align: center;
     padding: 1rem;
+    margin:0 auto;
 }
-.users-info  h3{
-}
-.users-info {
 
-}
 /* ******************************** FOOTER ******************************** */
 .footer{
     background-color: var(--footer-bg);

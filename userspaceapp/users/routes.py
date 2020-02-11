@@ -2,6 +2,7 @@
 from userspaceapp import db
 from userspaceapp.users.forms import LoginForm,RegisterForm,UpdateInfoForm
 from userspaceapp.users.models import User
+from userspaceapp.post.models import Post
 from flask import render_template,redirect,url_for,flash,request,Blueprint
 from flask_login import login_user,logout_user,login_required,current_user
 
@@ -40,8 +41,8 @@ def register():
 @users.route('/home')
 @login_required
 def home():
-    users=User.query.all()
-    return render_template('home.html',users=users)
+    posts=Post.query.all()
+    return render_template('home.html',posts=posts)
 #  ******************************** /ACCOUNT ******************************** 
 @users.route('/account')
 @login_required
